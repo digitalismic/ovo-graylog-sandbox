@@ -13,8 +13,13 @@
   get_url: url=https://raw.githubusercontent.com/Graylog2/graylog-contentpack-nginx/master/content_pack.json dest=/tmp/content_pack.json
 
 - name: Copy graylog server config
-  copy: src=./templates/server.j2 dest=/etc/graylog/server/server.conf
+  template: src=templates/server.j2 dest=/etc/graylog/server/server.conf
 
 - name: Ensure graylog started
   service: name=graylog-server state=restarted
 
+- name: Download slack alarm callback
+  get_url: url=https://github.com/Graylog2/graylog-plugin-slack/releases/download/2.4.0/graylog-plugin-slack-2.4.0.jar dest=/usr/share/graylog-server/plugin/
+
+- name: Download telegram alarm callback
+  get_url: url=https://github.com/Somewater/TelegramAlarmCallback/releases/download/v1.0.0/telegram-alarm-callback-1.0.0.jar dest=/usr/share/graylog-server/plugin/
