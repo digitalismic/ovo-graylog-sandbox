@@ -1,6 +1,6 @@
-[Development]
-vagrant ansible_ssh_port=2222 ansible_ssh_user=vagrant
-
 [logserver]
-#serundeng ansible_ssh_user=root
-vagrant ansible_ssh_port=2222 ansible_ssh_user=vagrant
+localhost ansible_connection=local
+
+[logserver:vars]
+hostname=akiklog.byte-stack.net
+hash_password=88f9cf0a68d5f611218526da40701c872aa63b147adeee22baddec7075ab8a76
